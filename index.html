@@ -25,6 +25,7 @@
   a { color: #3a332c; text-decoration: none; }
   a:hover { color: #c9944a; }
   ::selection { background: #f7e1d7; color: #3a332c; }
+  [data-flutuante][aria-hidden="true"] { opacity: 0; transform: translateY(14px); pointer-events: none; }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition-duration: .01ms !important; } }
 </style>
 </helmet>
@@ -124,12 +125,12 @@
 <article style="max-width:1440px;margin:0 auto;padding:clamp(56px,9vw,130px) clamp(20px,5vw,64px) 0">
   <div style="display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,72px);align-items:flex-end">
     <div data-reveal="1" style="transition:opacity 1.4s cubic-bezier(.22,.8,.28,1),transform 1.4s cubic-bezier(.22,.8,.28,1);flex:1.5 1 420px;min-width:0;max-width:560px;overflow:hidden">
-      <img src="assets/lorenzo.jpg" alt="Porta-maternidade Lorenzo: inicial L em ponto cheio com ursinho tenista, sobre fundo xadrez, em moldura de madeira" style="width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform 2s cubic-bezier(.22,.8,.28,1)" style-hover="transform:scale(1.03)">
+      <img src="assets/joao.jpg" alt="Porta-maternidade João: ursinho em lã de ovelha sobre fundo listrado, com o nome JOÃO bordado, em moldura de madeira" style="width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform 2s cubic-bezier(.22,.8,.28,1)" style-hover="transform:scale(1.03)">
     </div>
     <div data-reveal="1" data-delay="180" style="transition:opacity 1.4s cubic-bezier(.22,.8,.28,1),transform 1.4s cubic-bezier(.22,.8,.28,1);flex:1 1 360px;min-width:0;padding-bottom:clamp(4px,1vw,20px)">
       <div style="font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#6b6157;margin-bottom:16px">Maternidade</div>
       <h2 style="font-family:Fraunces,Georgia,serif;font-weight:300;font-style:italic;font-size:clamp(1.9rem,4.2vw,3rem);line-height:1.1;letter-spacing:-.03em;margin:0 0 20px">Porta-maternidade</h2>
-      <p style="margin:0 0 24px;color:#6b6157;font-size:16.5px;max-width:26em">Nome bordado à mão no bastidor, sobre um jardim pintado em aquarela. A frase de espera vai bordada na borda, com as palavras que você escolher.</p>
+      <p style="margin:0 0 24px;color:#6b6157;font-size:16.5px;max-width:26em">Nome bordado à mão em moldura de madeira, sobre um jardim pintado em aquarela. A frase de espera vai bordada na borda, com as palavras que você escolher.</p>
       <dl data-ficha="1" style="margin:0;display:flex;flex-direction:column;gap:0;font-size:13.5px">
         <div style="display:flex;gap:20px;padding:12px 0;border-top:1px solid rgba(58,51,44,.13)">
           <dt style="flex:0 0 80px;letter-spacing:.14em;text-transform:uppercase;font-size:10.5px;color:#6b6157;padding-top:4px">Técnica</dt>
@@ -140,8 +141,9 @@
             <dt style="letter-spacing:.14em;text-transform:uppercase;font-size:10.5px;color:#6b6157;margin-bottom:10px">Formato e valor</dt>
             <dd style="margin:0;display:flex;flex-direction:column;gap:8px;font-size:15px">
             <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span style="color:#6b6157">Moldura 20×20</span><span style="font-family:Fraunces,Georgia,serif;font-size:1.1rem;color:#3a332c;white-space:nowrap">R$ 600</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span style="color:#6b6157">Moldura 25×25</span><span style="font-family:Fraunces,Georgia,serif;font-size:1.1rem;color:#3a332c;white-space:nowrap">R$ 650</span></div>
             <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span style="color:#6b6157">Moldura 30×30</span><span style="font-family:Fraunces,Georgia,serif;font-size:1.1rem;color:#3a332c;white-space:nowrap">R$ 680</span></div>
-            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span style="color:#6b6157">Bastidor 20 cm</span><span style="font-family:Fraunces,Georgia,serif;font-size:1.1rem;color:#3a332c;white-space:nowrap">R$ 460</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span style="color:#6b6157">Tamanhos personalizados</span><span style="font-family:Fraunces,Georgia,serif;font-size:1.1rem;color:#3a332c;white-space:nowrap">Sob orçamento</span></div>
             </dd>
           </div>
         </sc-if>
@@ -155,8 +157,8 @@
   <div style="display:flex;flex-wrap:wrap-reverse;gap:clamp(28px,5vw,72px);align-items:flex-start">
     <div data-reveal="1" style="transition:opacity 1.4s cubic-bezier(.22,.8,.28,1),transform 1.4s cubic-bezier(.22,.8,.28,1);flex:1 1 360px;min-width:0;padding-top:clamp(4px,2vw,40px)">
       <div style="font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#6b6157;margin-bottom:16px">Casamento</div>
-      <h2 style="font-family:Fraunces,Georgia,serif;font-weight:300;font-style:italic;font-size:clamp(1.9rem,4.2vw,3rem);line-height:1.1;letter-spacing:-.03em;margin:0 0 20px">Bastidor dos noivos</h2>
-      <p style="margin:0 0 24px;color:#6b6157;font-size:16.5px;max-width:26em">Nomes, data e o buquê bordados em linho, para levar as alianças na cerimônia e depois ficar na parede. Também vai com o laço de fio natural.</p>
+      <h2 style="font-family:Fraunces,Georgia,serif;font-weight:300;font-style:italic;font-size:clamp(1.9rem,4.2vw,3rem);line-height:1.1;letter-spacing:-.03em;margin:0 0 20px">Porta-alianças</h2>
+      <p style="margin:0 0 24px;color:#6b6157;font-size:16.5px;max-width:26em">Nomes, data e o buquê bordados em linho, para levar as alianças na cerimônia e depois ficar na parede.</p>
       <dl data-ficha="1" style="margin:0;display:flex;flex-direction:column;gap:0;font-size:13.5px">
         <div style="display:flex;gap:20px;padding:12px 0;border-top:1px solid rgba(58,51,44,.13)">
           <dt style="flex:0 0 80px;letter-spacing:.14em;text-transform:uppercase;font-size:10.5px;color:#6b6157;padding-top:4px">Técnica</dt>
@@ -166,8 +168,8 @@
           <div style="padding:14px 0;border-top:1px solid rgba(58,51,44,.13);border-bottom:1px solid rgba(58,51,44,.13)">
             <dt style="letter-spacing:.14em;text-transform:uppercase;font-size:10.5px;color:#6b6157;margin-bottom:10px">Formato e valor</dt>
             <dd style="margin:0;display:flex;flex-direction:column;gap:8px;font-size:15px">
-            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span style="color:#6b6157">Oval vintage com laço</span><span style="font-family:Fraunces,Georgia,serif;font-size:1.1rem;color:#3a332c;white-space:nowrap">R$ 320</span></div>
-            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span style="color:#6b6157">Oval 23×18</span><span style="font-family:Fraunces,Georgia,serif;font-size:1.1rem;color:#3a332c;white-space:nowrap">R$ 380</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span style="color:#6b6157">Oval vintage</span><span style="font-family:Fraunces,Georgia,serif;font-size:1.1rem;color:#3a332c;white-space:nowrap">R$ 520</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span style="color:#6b6157">Bastidor de 20 cm</span><span style="font-family:Fraunces,Georgia,serif;font-size:1.1rem;color:#3a332c;white-space:nowrap">R$ 480</span></div>
             </dd>
           </div>
         </sc-if>
@@ -427,7 +429,7 @@ class Component extends DCLogic {
       waAula: this.wa("Oi, Pam! Queria saber as próximas datas das aulas de bordado."),
       waVeu: this.wa("Oi, Pam! Vi o véu de noiva bordado no site e queria conversar sobre um para o meu casamento."),
       waMaternidade: this.wa("Oi, Pam! Vi o porta-maternidade no site e queria um para o meu bebê."),
-      waCasamento: this.wa("Oi, Pam! Vi o bastidor dos noivos no site e queria um para o meu casamento."),
+      waCasamento: this.wa("Oi, Pam! Vi o porta-alianças no site e queria um para o meu casamento."),
       waSantiago: this.wa("Oi, Pam! Vi a Coleção Santiago no site e queria um brasão da minha família.")
     };
   }
@@ -473,9 +475,6 @@ class Component extends DCLogic {
       const io3 = new IntersectionObserver((entries) => {
         entries.forEach((e) => { if (e.isIntersecting) visiveis.add(e.target); else visiveis.delete(e.target); });
         const esconder = visiveis.size > 0;
-        botao.style.opacity = esconder ? "0" : "1";
-        botao.style.transform = esconder ? "translateY(14px)" : "none";
-        botao.style.pointerEvents = esconder ? "none" : "auto";
         botao.setAttribute("aria-hidden", esconder ? "true" : "false");
         botao.tabIndex = esconder ? -1 : 0;
       }, { rootMargin: "-8% 0px -8% 0px" });

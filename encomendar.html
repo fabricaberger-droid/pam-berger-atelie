@@ -25,6 +25,12 @@
   a { color: #3a332c; text-decoration: none; }
   a:hover { color: #c9944a; }
   ::selection { background: #f7e1d7; color: #3a332c; }
+  [data-flutuante][aria-hidden="true"] { opacity: 0; transform: translateY(14px); pointer-events: none; }
+  [data-reveal] { transition: opacity 1.3s cubic-bezier(.22,.8,.28,1), transform 1.3s cubic-bezier(.22,.8,.28,1); }
+  [data-reveal][data-oculto] { opacity: 0; transform: translateY(24px); }
+  [data-stitch-path] { transition: stroke-dashoffset 2.2s cubic-bezier(.22,.8,.28,1); }
+  [data-stitch-path][data-oculto] { stroke-dashoffset: 1000; }
+  [data-sem-transicao] [data-reveal], [data-sem-transicao] [data-stitch-path] { transition: none !important; }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition-duration: .01ms !important; } }
 </style>
 </helmet>
@@ -50,17 +56,17 @@
 </header>
 
 <section style="max-width:1440px;margin:0 auto;padding:clamp(40px,8vh,110px) clamp(20px,5vw,64px) clamp(44px,7vw,80px)">
-  <div data-reveal="1" style="transition:opacity 1.5s cubic-bezier(.22,.8,.28,1),transform 1.5s cubic-bezier(.22,.8,.28,1);display:flex;flex-wrap:wrap;gap:clamp(26px,6vw,80px);align-items:flex-end">
+  <div data-reveal="1" style="display:flex;flex-wrap:wrap;gap:clamp(26px,6vw,80px);align-items:flex-end">
     <h1 style="flex:1 1 420px;min-width:0;font-family:Fraunces,Georgia,serif;font-weight:300;font-size:clamp(3rem,9vw,7rem);line-height:.94;letter-spacing:-.04em;margin:0;text-wrap:balance">Vamos <em style="font-style:italic;font-weight:300;color:#c9944a">conversar</em></h1>
     <p style="flex:0 1 300px;min-width:0;margin:0 0 clamp(8px,1vw,18px);color:#6b6157;font-size:16.5px;line-height:1.75">Conte sua ideia, tire dúvidas ou reserve uma aula.</p>
   </div>
   <svg viewBox="0 0 300 16" preserveAspectRatio="none" style="width:100%;height:16px;display:block;margin:clamp(34px,5vw,60px) 0 0;overflow:visible">
-    <path data-stitch-path="1" d="M1 9 Q 75 2, 150 9 T 299 8" pathLength="1000" fill="none" stroke="#c9944a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="6 10" strokeDashoffset="0" style="transition:stroke-dashoffset 2.4s cubic-bezier(.22,.8,.28,1)"></path>
+    <path data-stitch-path="1" d="M1 9 Q 75 2, 150 9 T 299 8" pathLength="1000" fill="none" stroke="#c9944a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="6 10" strokeDashoffset="0"></path>
   </svg>
 </section>
 
 <section style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,5vw,64px) clamp(60px,9vw,120px)">
-  <div data-reveal="1" style="transition:opacity 1.4s cubic-bezier(.22,.8,.28,1),transform 1.4s cubic-bezier(.22,.8,.28,1);display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,72px);align-items:flex-start">
+  <div data-reveal="1" style="display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,72px);align-items:flex-start">
     <div style="flex:1 1 380px;min-width:0;max-width:34em">
       <p style="margin:0 0 clamp(26px,3.4vw,38px);font-family:Fraunces,Georgia,serif;font-weight:300;font-size:clamp(1.5rem,3.6vw,2.4rem);line-height:1.22;letter-spacing:-.028em;text-wrap:pretty">Me manda uma mensagem no WhatsApp. Respondo com ideias, prazo e valor no mesmo dia.</p>
       <a href="{{ waEncomenda }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;background:#3a332c;color:#fffdfa;padding:17px 32px;border-radius:999px;font-size:16px;font-weight:600;min-height:54px" style-hover="background:#c9944a">
@@ -108,12 +114,12 @@
 
 <section id="faq" style="max-width:1440px;margin:0 auto;padding:clamp(70px,11vw,150px) clamp(20px,5vw,64px)">
   <div style="display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,72px);align-items:flex-start">
-  <div data-reveal="1" style="transition:opacity 1.4s cubic-bezier(.22,.8,.28,1),transform 1.4s cubic-bezier(.22,.8,.28,1);flex:0 1 clamp(240px,26vw,340px);min-width:0">
+  <div data-reveal="1" style="flex:0 1 clamp(240px,26vw,340px);min-width:0">
     <div style="font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#6b6157;margin-bottom:18px">Prazo, envio e dúvidas</div>
     <h2 style="font-family:Fraunces,Georgia,serif;font-weight:300;font-size:clamp(2rem,5.4vw,3.6rem);line-height:1.04;letter-spacing:-.035em;margin:0;max-width:20em;text-wrap:balance">Antes de encomendar</h2>
   </div>
 
-  <div data-reveal="1" data-delay="120" style="transition:opacity 1.4s cubic-bezier(.22,.8,.28,1),transform 1.4s cubic-bezier(.22,.8,.28,1);flex:1 1 380px;min-width:0;border-bottom:1px solid rgba(58,51,44,.14)">
+  <div data-reveal="1" data-delay="120" style="flex:1 1 380px;min-width:0;border-bottom:1px solid rgba(58,51,44,.14)">
     <div style="border-top:1px solid rgba(58,51,44,.14)">
       <button type="button" onClick="{{ abrir0 }}" style="width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:Fraunces,Georgia,serif;font-size:clamp(1.08rem,2.2vw,1.3rem);color:#3a332c;min-height:56px">
         <span>Quanto tempo leva para ficar pronto?</span>
@@ -148,7 +154,7 @@
 
 <section style="background:#f7e1d7">
   <div style="max-width:1440px;margin:0 auto;padding:clamp(60px,9vw,120px) clamp(20px,5vw,64px)">
-    <div data-reveal="1" style="transition:opacity 1.4s cubic-bezier(.22,.8,.28,1),transform 1.4s cubic-bezier(.22,.8,.28,1);display:flex;flex-wrap:wrap;gap:clamp(24px,5vw,64px);align-items:flex-end;justify-content:space-between">
+    <div data-reveal="1" style="display:flex;flex-wrap:wrap;gap:clamp(24px,5vw,64px);align-items:flex-end;justify-content:space-between">
       <p style="flex:1 1 320px;min-width:0;margin:0;font-family:Fraunces,Georgia,serif;font-weight:300;font-size:clamp(1.6rem,4.2vw,2.8rem);line-height:1.16;letter-spacing:-.03em;max-width:22em;text-wrap:pretty">Cada ponto carrega uma intenção. Me conta qual é a sua.</p>
       <a href="{{ waEncomenda }}" target="_blank" rel="noopener" style="flex:0 0 auto;display:inline-flex;align-items:center;gap:12px;background:#3a332c;color:#fffdfa;padding:17px 32px;border-radius:999px;font-size:16px;font-weight:600;min-height:54px" style-hover="background:#c9944a">
         <svg viewBox="0 0 32 32" style="width:19px;height:19px;fill:currentColor"><path d="M16 3C9 3 3.3 8.6 3.3 15.5c0 2.5.7 4.8 2 6.8L3 29l7-2.2c1.9 1 4 1.6 6 1.6 7 0 12.7-5.6 12.7-12.5S23 3 16 3zm0 22.7c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-4.2 1.3 1.3-4.1-.2-.4c-1-1.7-1.6-3.6-1.6-5.6C5.6 9.9 10.3 5.3 16 5.3s10.4 4.6 10.4 10.2S21.7 25.7 16 25.7zm5.7-7.6c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.7-1.6-1-.9-1.6-2-1.8-2.3-.2-.3 0-.5.1-.6.1-.1.3-.4.5-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C13.5 12 13 10.7 12.8 10c-.2-.5-.4-.5-.5-.5h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"></path></svg>
@@ -174,6 +180,10 @@
   </div>
 </footer>
 
+<a href="{{ waEncomenda }}" target="_blank" rel="noopener" aria-label="Encomendar pelo WhatsApp" title="Encomendar pelo WhatsApp" data-flutuante="1" style="position:fixed;bottom:clamp(16px,3vw,28px);right:clamp(16px,3vw,28px);z-index:80;width:52px;height:52px;border-radius:50%;background:#3a332c;color:#fffdfa;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -12px rgba(58,51,44,.7)" style-hover="background:#c9944a">
+  <svg viewBox="0 0 32 32" style="width:22px;height:22px;fill:currentColor"><path d="M16 3C9 3 3.3 8.6 3.3 15.5c0 2.5.7 4.8 2 6.8L3 29l7-2.2c1.9 1 4 1.6 6 1.6 7 0 12.7-5.6 12.7-12.5S23 3 16 3zm0 22.7c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-4.2 1.3 1.3-4.1-.2-.4c-1-1.7-1.6-3.6-1.6-5.6C5.6 9.9 10.3 5.3 16 5.3s10.4 4.6 10.4 10.2S21.7 25.7 16 25.7zm5.7-7.6c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.7-1.6-1-.9-1.6-2-1.8-2.3-.2-.3 0-.5.1-.6.1-.1.3-.4.5-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C13.5 12 13 10.7 12.8 10c-.2-.5-.4-.5-.5-.5h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"></path></svg>
+</a>
+
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;movimento&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;elaborado&quot;,&quot;discreto&quot;],&quot;default&quot;:&quot;elaborado&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Movimento&quot;},&quot;whatsapp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;5547996409666&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contato&quot;}}">
@@ -196,22 +206,46 @@ class Component extends DCLogic {
     };
   }
   componentDidMount() {
+    // Revelação por atributo + regra CSS: o render reescreve style inline e travaria a transição.
     const suave = this.props.movimento === "discreto";
     const reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const mostrar = (el) => { el.style.opacity = "1"; el.style.transform = "none"; };
     const reveals = Array.from(document.querySelectorAll("[data-reveal]"));
     const linhas = Array.from(document.querySelectorAll("[data-stitch-path]"));
+    const mostrar = (el) => el.removeAttribute("data-oculto");
+
+    const botao = document.querySelector("[data-flutuante]");
+    if (botao) {
+      const alvos = Array.from(document.querySelectorAll("h1,h2,h3,p,span,a,li,figcaption,button")).filter((el) =>
+        el !== botao && !botao.contains(el) &&
+        Array.from(el.childNodes).some((n) => n.nodeType === 3 && n.textContent.trim().length > 1));
+      const checar = () => {
+        const r = botao.getBoundingClientRect();
+        const colide = alvos.some((el) => {
+          const q = el.getBoundingClientRect();
+          if (!q.width || !q.height || q.bottom < 0 || q.top > innerHeight) return false;
+          return q.left < r.right && q.right > r.left && q.top < r.bottom && q.bottom > r.top;
+        });
+        botao.setAttribute("aria-hidden", colide ? "true" : "false");
+        botao.tabIndex = colide ? -1 : 0;
+      };
+      let agendado = false;
+      this._vigia = () => { if (agendado) return; agendado = true; requestAnimationFrame(() => { agendado = false; checar(); }); };
+      document.addEventListener("scroll", this._vigia, { passive: true, capture: true });
+      window.addEventListener("resize", this._vigia);
+      setTimeout(checar, 400);
+      this._ronda = setInterval(checar, 700);
+    }
 
     // O markup nasce visível. Só escondemos aqui, quando há JS para revelar de volta.
     if (reduzir) return;
-    reveals.forEach((el) => { el.style.opacity = "0"; el.style.transform = "translateY(24px)"; });
-    linhas.forEach((el) => { el.style.strokeDashoffset = "1000"; });
+    reveals.forEach((el) => el.setAttribute("data-oculto", ""));
+    linhas.forEach((el) => el.setAttribute("data-oculto", ""));
 
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (!e.isIntersecting) return;
-        e.target.style.transitionDelay = (suave ? 0 : Number(e.target.dataset.delay || 0)) + "ms";
-        mostrar(e.target);
+        const atraso = suave ? 0 : Number(e.target.dataset.delay || 0);
+        setTimeout(() => mostrar(e.target), atraso);
         io.unobserve(e.target);
       });
     }, { threshold: 0.06, rootMargin: "0px 0px -5% 0px" });
@@ -219,24 +253,27 @@ class Component extends DCLogic {
     this._io = io;
 
     const io2 = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        e.target.style.strokeDashoffset = "0";
-        io2.unobserve(e.target);
-      });
+      entries.forEach((e) => { if (e.isIntersecting) { mostrar(e.target); io2.unobserve(e.target); } });
     }, { threshold: 0.3 });
     linhas.forEach((el) => io2.observe(el));
     this._io2 = io2;
 
-    this._fallback = setTimeout(() => {
-      reveals.forEach(mostrar);
-      linhas.forEach((el) => { el.style.strokeDashoffset = "0"; });
-    }, 5000);
+    // Se o relógio de animação do ambiente estiver parado, a transição congela no valor inicial.
+    // Nesse caso desligamos a transição e o conteúdo aparece na hora: conteúdo nunca fica preso.
+    const conferir = () => {
+      const preso = reveals.some((el) => !el.hasAttribute("data-oculto") && parseFloat(getComputedStyle(el).opacity) < 0.9);
+      if (preso) document.documentElement.setAttribute("data-sem-transicao", "");
+    };
+    this._checa1 = setTimeout(conferir, 1800);
+    this._fallback = setTimeout(() => { reveals.forEach(mostrar); linhas.forEach(mostrar); conferir(); }, 4000);
   }
   componentWillUnmount() {
     if (this._io) this._io.disconnect();
     if (this._io2) this._io2.disconnect();
     if (this._fallback) clearTimeout(this._fallback);
+    if (this._checa1) clearTimeout(this._checa1);
+    if (this._ronda) clearInterval(this._ronda);
+    if (this._vigia) { document.removeEventListener("scroll", this._vigia, true); window.removeEventListener("resize", this._vigia); }
   }
 }
 </script>
