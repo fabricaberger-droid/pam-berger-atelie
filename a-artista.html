@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-injected>html,body{background:transparent}</style><script data-omelette-injected>(()=>{{const n=new URLSearchParams(location.search).get("theme");if(n==="light"||n==="dark"){document.documentElement.dataset.theme=n}}{if(new URLSearchParams(location.search).get("_omthumb")==="1"){const n=(f)=>{const g=f.focus;if(!g)return;f.focus=function(h){g.call(this,{...h,preventScroll:true})}};n(HTMLElement.prototype);n(SVGElement.prototype);if(typeof MathMLElement!=="undefined"){n(MathMLElement.prototype)}const d=(f)=>{f.removeAttribute("autofocus");f.inert=true;if(!(f instanceof HTMLElement))f.removeAttribute("tabindex")};const p=(f)=>{if(f.hasAttribute("autofocus"))d(f);for(const g of f.querySelectorAll("[autofocus]")){d(g)}};p(document.documentElement);new MutationObserver((f)=>{for(const g of f){for(const h of g.addedNodes){if(h.nodeType===1)p(h)}}}).observe(document,{childList:true,subtree:true})}}{const n=()=>{try{if(document.querySelector('meta[name="color-scheme"]'))return;const d=getComputedStyle(document.documentElement).getPropertyValue("color-scheme").trim();if(d&&d!=="normal")return;const p=(y)=>{if(!y)return null;const m=getComputedStyle(y).backgroundColor.match(/^rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)(?:[,\s/]+([\d.]+%?))?\s*\)$/);if(!m)return null;const w=m[4]==null?1:parseFloat(m[4])/(m[4].endsWith("%")?100:1);if(w<0.99)return null;return[+m[1],+m[2],+m[3]]};const f=p(document.body)||p(document.documentElement);if(!f)return;const g=(y)=>{const m=y/255;return m<=0.04045?m/12.92:((m+0.055)/1.055)**2.4};const h=0.2126*g(f[0])+0.7152*g(f[1])+0.0722*g(f[2]);document.documentElement.style.setProperty("color-scheme",h<0.4?"dark":"light")}catch{}};if(document.readyState==="complete")n();else window.addEventListener("load",n)}var I=[];var B=false;var K=false;var C=()=>{};if(K===true){try{const n=setTimeout.bind(window);const d=1e4;const p=15;const f=1e4;const g=120000;const h=200;const y=(o)=>{try{let r;if(typeof o==="string")r=o;else if(o instanceof URL)r=o.href;else if(typeof Request!=="undefined"&&o instanceof Request)r=o.url;else return null;if(!r)return null;const l=document.baseURI;const i=new URL(r,l);if(i.protocol!=="http:"&&i.protocol!=="https:")return null;if(i.origin!==new URL(l).origin)return null;return i.origin+i.pathname}catch{return null}};const m=new Map;const w=(o)=>{let r=m.get(o);if(!r){if(m.size>=h){const l=m.keys().next().value;if(l!==undefined)m.delete(l)}r={fails:[],until:0,cooldown:f,hard:false};m.set(o,r)}return r};const R=(o)=>{const r=m.get(o);return r!==undefined&&r.until>Date.now()};const O=(o,r)=>{const l=Date.now();const i=w(o);if(r)i.hard=true;if(i.until>l)return;i.fails.push(l);while(i.fails.length>0&&i.fails[0]<=l-d)i.fails.shift();if(i.fails.length>=p){i.until=l+i.cooldown;if(i.hard)i.cooldown=Math.min(i.cooldown*2,g);i.fails.length=0;try{n(()=>{try{S(true)}catch{}},i.until-l+100)}catch{}console.warn("[omelette] asset circuit breaker: pausing requests to "+o+" for "+Math.round((i.until-l)/1000)+"s after "+p+" failures in "+d/1000+"s")}};const e=(o)=>{m.delete(o)};const t=100;const a=new WeakMap;const u=new Set;let s=null;const S=(o)=>{for(const r of Array.from(u)){try{const l=a.get(r);if(l===undefined){u.delete(r);continue}if(o){const i=y(l);if(i!==null&&R(i))continue}a.delete(r);u.delete(r);if(s!==null)s.call(r,l)}catch{}}};C=()=>{try{m.clear();S(false)}catch{}};document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")C()});const _=window.fetch;if(typeof _==="function"){const o=function(...r){let l=null;try{l=y(r[0])}catch{}if(l!==null&&R(l)){let c;try{if(r[1]&&r[1].signal!==undefined){c=r[1].signal||undefined}else if(typeof Request!=="undefined"&&r[0]instanceof Request){c=r[0].signal||undefined}}catch{c=undefined}return new Promise((k,b)=>{const E=()=>{try{return c.reason!==undefined?c.reason:new DOMException("The operation was aborted.","AbortError")}catch{return new DOMException("The operation was aborted.","AbortError")}};try{if(c&&c.aborted){b(E());return}}catch{}let T=false;const j=()=>{if(T)return;T=true;b(E())};try{if(c)c.addEventListener("abort",j,{once:true})}catch{}n(()=>{if(T)return;T=true;try{if(c)c.removeEventListener("abort",j)}catch{}let L;try{L=new Response(null,{status:429,statusText:"Too Many Requests",headers:{"Retry-After":"10"}})}catch{L={ok:false,status:429}}k(L)},250)})}const i=_.apply(window,r);if(l!==null){const c=l;i.then((k)=>{try{if(k.ok)e(c);else if(k.status===401||k.status===403||k.status===404||k.status===429){O(c,k.status!==404)}}catch{}},()=>{})}return i};window.fetch=o}const v=Object.getOwnPropertyDescriptor(HTMLImageElement.prototype,"src");if(v!==undefined&&v.set!==undefined&&v.get!==undefined){const o=v.set;s=o;Object.defineProperty(HTMLImageElement.prototype,"src",{configurable:true,enumerable:v.enumerable,get:v.get,set(r){const l=`${r}`;try{const i=y(l);if(i!==null&&R(i)){a.set(this,l);if(u.size<t)u.add(this);return}}catch{}try{a.delete(this);u.delete(this)}catch{}o.call(this,l)}})}try{const o=HTMLImageElement.prototype.setAttribute;HTMLImageElement.prototype.setAttribute=function(r,l){if(arguments.length<2){o.apply(this,arguments);return}if(typeof r==="string"&&r.toLowerCase()==="src"){const i=`${l}`;try{const c=y(i);if(c!==null&&R(c)){a.set(this,i);if(u.size<t)u.add(this);return}a.delete(this);u.delete(this)}catch{}o.call(this,r,i);return}o.call(this,r,l)}}catch{}window.addEventListener("error",(o)=>{try{const r=o.target;if(r instanceof HTMLImageElement){const l=y(r.currentSrc||r.src||"");if(l!==null)O(l,true)}}catch{}},true);window.addEventListener("load",(o)=>{try{const r=o.target;if(r instanceof HTMLImageElement){const l=y(r.currentSrc||r.src||"");if(l!==null)e(l);const i=a.get(r);if(i!==undefined){let c=false;try{c=new URL(i,document.baseURI).href===new URL(r.currentSrc||r.src||"",document.baseURI).href}catch{c=false}if(c){a.delete(r);u.delete(r)}}}}catch{}},true)}catch{}}var J=30000;var G=3000;document.addEventListener("DOMContentLoaded",()=>{const n=window.Babel;const d="om-src-id";if(n&&n.registerPlugin&&!(n.availablePlugins&&n.availablePlugins[d])){n.registerPlugin(d,({types:h})=>({visitor:{JSXOpeningElement(y,m){const w=y.node;if(w.name&&w.name.type==="JSXMemberExpression")return;for(let t=0;t<w.attributes.length;t++){const a=w.attributes[t];if(a.type==="JSXAttribute"&&a.name&&a.name.name==="data-om-id")return}const R=m.file&&m.file.opts&&m.file.opts.filename||"?";const O=w.loc&&w.loc.start;const e=`jsx:${R}:${w.start??0}:${O?O.line:0}:${O?O.column+1:0}`;w.attributes.push(h.jsxAttribute(h.jsxIdentifier("data-om-id"),h.stringLiteral(e)))}}}))}const p="om-text-extract";let f=false;if(B&&n&&n.registerPlugin&&!(n.availablePlugins&&n.availablePlugins[p])){const h=window.React;if(h&&h.useSyncExternalStore&&h.createElement){f=true;const y={};const m=new Set;let w=0;window.__omTextO=y;window.__omTextSet=(e)=>{for(const t in e){const a=e[t];if(a==null)delete y[t];else y[t]=a}w++;m.forEach((t)=>t())};const R=(e)=>{m.add(e);return()=>m.delete(e)};const O=()=>w;window.__OmT=function e(t){h.useSyncExternalStore(R,O,O);return h.createElement("span",{"data-om-text":t.i,className:"__om-t"},t.i in y?y[t.i]:t.children)};n.registerPlugin(p,({types:e})=>{const t={style:1,script:1,noscript:1,textarea:1,title:1,option:1,text:1,tspan:1,textPath:1};const a={placeholder:1,alt:1,title:1,label:1,"aria-label":1,"aria-description":1,"aria-placeholder":1};const u=(o,r)=>e.logicalExpression("??",e.memberExpression(e.logicalExpression("||",e.memberExpression(e.identifier("window"),e.identifier("__omTextO")),e.objectExpression([])),e.stringLiteral(o),true),r);const s=(o)=>o.file&&o.file.opts&&o.file.opts.filename||"?";const S=(o)=>o.file&&o.file.code||"";const _=(o,r)=>{const l=(c)=>c&&c.start!=null&&c.end!=null&&(c.type==="StringLiteral"||c.type==="TemplateLiteral"&&c.expressions.length===0)?[c.start,c.end]:null;const i=l(r);if(i)return i;if(r&&r.type==="Identifier"){const c=o.scope.getBinding(r.name);if(c&&c.constant&&c.path.node.type==="VariableDeclarator"){return l(c.path.node.init)}}return null};const v=(o,r,l)=>{const i=o.node;let c=false;const k=(E,T)=>{c=true;return e.jsxElement(e.jsxOpeningElement(e.jsxIdentifier("__OmT"),[e.jsxAttribute(e.jsxIdentifier("i"),e.stringLiteral(E))],false),e.jsxClosingElement(e.jsxIdentifier("__OmT")),[T],false)};const b=i.children.map((E)=>{if(E.type==="JSXText"){if(E.start==null||E.end==null)return E;const T=l.slice(E.start,E.end);const j=T.length-T.trimStart().length;const L=T.length-T.trimEnd().length;if(j+L>=T.length)return E;return k(`txt:${r}:${E.start+j}:${E.end-L}`,E)}if(E.type==="JSXExpressionContainer"){const T=_(o,E.expression);if(T)return k(`str:${r}:${T[0]}:${T[1]}`,E)}return E});if(c)i.children=b};return{visitor:{JSXOpeningElement(o,r){const l=o.node;const i=s(r);const c={};for(let k=0;k<l.attributes.length;k++){const b=l.attributes[k];if(b.type!=="JSXAttribute"||!b.name)continue;const E=b.name.name;if(!a[E])continue;if(!b.value||b.value.type!=="StringLiteral")continue;if(b.value.start==null||b.value.end==null)continue;const T=`txt:${i}:${b.value.start}:${b.value.end}`;c[E]=T;b.value=e.jsxExpressionContainer(u(T,e.stringLiteral(b.value.value)))}if(Object.keys(c).length){l.attributes.push(e.jsxAttribute(e.jsxIdentifier("data-om-text-attrs"),e.stringLiteral(JSON.stringify(c))))}},JSXElement(o,r){const l=o.node.openingElement;const i=l&&l.name&&l.name.name;if(i==="__OmT")return;if(typeof i==="string"&&t[i])return;v(o,s(r),S(r))},JSXFragment(o,r){v(o,s(r),S(r))}}}})}}const g=f?["transform-react-jsx-source",d,p]:["transform-react-jsx-source",d];document.querySelectorAll('script[type="text/babel"],script[type="text/jsx"]').forEach((h,y)=>{const m=h.getAttribute("data-plugins")||"";const w=g.filter((R)=>m.indexOf(R)<0);if(w.length){h.setAttribute("data-plugins",m?`${m},${w.join(",")}`:w.join(","))}if(!h.hasAttribute("data-filename")){h.setAttribute("data-filename",h.getAttribute("src")||`inline-${y}`)}})});var A=window.parent;var U="not editable here — open the project in the Claude Design editor to save";var W=()=>Promise.resolve({persisted:false,noHost:true,reason:U});var H=W;var M="data/storage.json";var z=()=>{try{const n=new URL(document.baseURI);const d=n.pathname.match(/\/projects\/([^/]+)\/serve\//);if(d)return d[1];return n.hostname.split(".")[0]||""}catch{return location.hostname.split(".")[0]||""}};var Z=()=>{try{const n=new URL(document.baseURI);const d=n.pathname.indexOf("/serve/");if(d>=0)return n.origin+n.pathname.slice(0,d+"/serve/".length)+M}catch{}return"./"+M};var x=null;var N=()=>{if(!x){x=fetch(Z(),{cache:"no-store"}).then((n)=>{if(n.ok)return n.text();return n.status===404?"":null}).catch(()=>null).then((n)=>{if(n===null){x=null;return null}const d=new Map;if(!n)return d;let p;try{p=JSON.parse(n)}catch{console.warn("[omelette.storage] "+M+" is not valid JSON; treating the store as unreadable so a save cannot overwrite the "+"hand-edited bytes. Fix the JSON (or delete the file) to re-enable persistence.");x=null;return null}if(p===null||typeof p!=="object"||Array.isArray(p)){console.warn("[omelette.storage] "+M+" doesn't hold a JSON object; treating the store as unreadable so a save cannot "+"overwrite the hand-edited bytes. Make the top level a JSON object to re-enable persistence.");x=null;return null}const f=p;if("data"in f){const g=f.data;if(g===null||typeof g!=="object"||Array.isArray(g)){console.warn("[omelette.storage] "+M+' has a "data" field that is not a JSON object; treating the store as unreadable so a '+'save cannot overwrite the hand-edited bytes. Make "data" a JSON object to re-enable persistence.');x=null;return null}const h=f._meta;const y=h!==null&&typeof h==="object"?h.project:undefined;if(typeof y==="string"&&y!==""&&y!==z())return d;for(const m of Object.keys(g))d.set(m,g[m]);return d}for(const g of Object.keys(f)){if(g!=="_meta")d.set(g,f[g])}return d})}return x};var F=(n)=>H(M,JSON.stringify({_meta:{project:z(),version:1},data:Object.fromEntries(n)},null,2));var D=Promise.resolve();var $=(n)=>{const d=D.then(n);D=d.then(()=>{return},()=>{return});return d};var V=/sk-(?:ant-)?[A-Za-z0-9_-]{16,}|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{20,}|xox[a-z]-[A-Za-z0-9][A-Za-z0-9-]{9,}|AIza[0-9A-Za-z_-]{30,}|-----BEGIN [A-Z ]*PRIVATE KEY-----/;var Y=/password|passwd|secret|api[_-]?key|access[_-]?token|auth[_-]?token|credential/i;var Q=(n,d,p)=>{if(V.test(d)||Y.test(n)&&typeof p==="string"&&p.length>=8){console.warn('[omelette.storage] the value for "'+n+'" looks like a credential. The storage file is a plaintext project file — visible to '+"everyone with project access and copied when the project is duplicated. Do not store secrets here.")}};var q={persisted:false,reason:"could not load the existing store — not overwriting it"};var X={persisted:false,reason:"stored value changed since a failed read — re-read this key before saving"};var P=new Set;var ee={get:(n)=>{if(typeof n!=="string"){return Promise.reject(new TypeError("storage.get: key must be a string"))}return $(N).then((d)=>{if(d===null){P.add(n);return null}P.delete(n);if(!d.has(n))return null;const p=d.get(n);return p==null?null:JSON.parse(JSON.stringify(p))})},set:(n,d)=>{if(typeof n!=="string"){return Promise.reject(new TypeError("storage.set: key must be a string"))}let p;try{p=JSON.stringify(d)}catch(g){return Promise.reject(new TypeError("storage.set: value must be JSON-serializable ("+String(g)+")"))}if(p===undefined){return Promise.reject(new TypeError("storage.set: value must be JSON-serializable"))}Q(n,p,d);const f=JSON.parse(p);return $(()=>N().then((g)=>{if(g===null)return q;if(P.has(n)){if(g.has(n))return X;P.delete(n)}g.set(n,f);return F(g)}))},delete:(n)=>{if(typeof n!=="string"){return Promise.reject(new TypeError("storage.delete: key must be a string"))}return $(()=>N().then((d)=>{if(d===null)return q;if(P.has(n)){if(d.has(n))return X;P.delete(n)}d.delete(n);return F(d)}))},keys:()=>$(N).then((n)=>n===null?[]:Array.from(n.keys()))};window.omelette={writeFile:(n,d)=>H(n,d).then((p)=>{if(!p.persisted&&!p.noHost){throw new Error(p.reason||"write failed")}}),storage:ee};if(A&&A!==window){const n=(e,t)=>{try{A.postMessage({__omelette_log:true,type:e,data:t},"*")}catch{}};["log","warn","error"].forEach((e)=>{const t=console[e];console[e]=(...a)=>{const u=a.map((s)=>{try{return typeof s==="object"?JSON.stringify(s):String(s)}catch{try{return String(s)}catch{return"[unstringifiable]"}}}).join(" ");n(e,u);t.apply(console,a)}});window.addEventListener("error",(e)=>{const t=e.target;if(t&&t!==window&&t.tagName){const a=t.src||t.href||"";n("resource_error",`${t.tagName} failed to load: ${a}`)}else{n("error",`${e.message||"Unknown error"} at ${e.filename||"?"}:${e.lineno||0}:${e.colno||0}`)}},true);window.addEventListener("unhandledrejection",(e)=>{const t=e.reason;const a=t instanceof Error?`${t.message} ${t.stack}`:String(t);n("error",`Unhandled rejection: ${a}`)});window.addEventListener("click",(e)=>{if(e.defaultPrevented||e.button!==0)return;if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;const t=e.composedPath?e.composedPath():[];const a=["button","input","select","textarea","summary","label"];let u=null;for(const v of t){if(!(v instanceof Element))continue;if(v.localName==="a"){if(!(v instanceof HTMLAnchorElement))return;u=v;break}if(a.indexOf(v.localName)!==-1)return}if(!u)return;if(u.isContentEditable)return;const s=u.closest("[contenteditable]");if(s&&s.getAttribute("contenteditable")!=="false")return;const S=(u.getAttribute("target")||"_self").toLowerCase();if(S!=="_self"&&S!=="_top"&&S!=="_parent")return;let _;try{_=new URL(u.href)}catch{return}if(_.protocol!=="http:"&&_.protocol!=="https:")return;if(location.origin==="null")return;if(_.origin===location.origin)return;e.preventDefault();window.open(_.href,"_blank","noopener,noreferrer")});const d=()=>{try{A.postMessage({type:"omelette:height",height:document.documentElement.scrollHeight},"*")}catch{}};if(window.ResizeObserver)new ResizeObserver(d).observe(document.documentElement);const p=()=>{d();if(!document.querySelector('script[type="text/babel"],script[type="text/jsx"]'))return;const e=()=>document.getElementById("root")||document.querySelector("body > div[id]");const t=e()?.firstElementChild??null;let a=0;const u=()=>{const s=e();if(s&&s.firstElementChild!==t||++a>30){d();return}setTimeout(u,100)};setTimeout(u,100)};if(document.readyState==="complete")p();else window.addEventListener("load",p);const f={};let g=0;const h=(e)=>new Promise((t,a)=>{if(!I.length){a(new Error("claude.complete: no parent origin"));return}const u=`c${++g}`;const s=()=>setTimeout(()=>{delete f[u];a(new Error(`claude.complete: no data for ${J/1000}s`))},J);const S=s();f[u]={resolve:t,reject:a,text:"",t:S,arm:s};try{for(const _ of I){A.postMessage({__om_api:true,id:u,body:e},_)}}catch(_){clearTimeout(S);delete f[u];a(_)}});const y=8;const m=async(e,t)=>{if(!Array.isArray(e.messages)){throw new Error("claude.complete: tools require a messages array")}const a=e.messages.slice();const u={...e,tools:e.tools.map((_)=>{if(_===null||typeof _!=="object")return _;const v={};for(const o of Object.keys(_)){if(typeof _[o]!=="function")v[o]=_[o]}return v})};const s=u.tool_choice;const S=s!=null&&(s.type==="any"||s.type==="tool")?{...u,tool_choice:s.disable_parallel_tool_use!==undefined?{type:"auto",disable_parallel_tool_use:s.disable_parallel_tool_use}:{type:"auto"}}:u;for(let _=0;_<y;_++){const v=await h({..._===0?u:S,messages:a});const o=v.message;const r=o&&Array.isArray(o.content)?o.content:null;const l=r?r.filter((c)=>c?.type==="tool_use"):[];if(o?.stop_reason!=="tool_use"||l.length===0){return v.text}const i=[];for(const c of l){const k=t.get(c.name);if(!k){i.push({type:"tool_result",tool_use_id:c.id,content:`no handler for tool "${c.name}"`,is_error:true});continue}try{const b=await k(c.input);const E=typeof b==="string"?b:O(b)??"";i.push({type:"tool_result",tool_use_id:c.id,content:E})}catch(b){i.push({type:"tool_result",tool_use_id:c.id,content:String(b?.message??b??"tool handler failed"),is_error:true})}}a.push({role:"assistant",content:r},{role:"user",content:i})}throw new Error(`claude.complete: exceeded ${y} tool turns`)};window.claude={complete(e){const t=e;if(t!==null&&typeof t==="object"&&Array.isArray(t.tools)&&t.tools.some((a)=>a!==null&&typeof a==="object"&&typeof a.run==="function")){const a=new Map;for(const u of t.tools){if(u!==null&&typeof u==="object"&&typeof u.run==="function"){a.set(String(u.name),u.run)}}return m(t,a)}return h(e).then((a)=>a.text)}};const w={};let R=0;H=(e,t)=>new Promise((a)=>{if(!I.length){a({persisted:false,noHost:true,reason:U});return}const u=`f${++R}`;const s=setTimeout(()=>{delete w[u];a({persisted:false,noHost:true,reason:U})},G);w[u]={settle:a,t:s};try{for(const S of I){A.postMessage({__om_file:true,id:u,op:"write",path:e,content:t},S)}}catch{clearTimeout(s);delete w[u];a({persisted:false,noHost:true,reason:U})}});const O=(e)=>{try{return JSON.stringify(e)}catch{return JSON.stringify(String(e))}};window.addEventListener("message",(e)=>{if(I.indexOf(e.origin)<0)return;if(e.source!==A)return;const t=e.data;if(!t)return;if(t.type==="omelette-preview-refresh"){if(typeof t.token!=="string"||!/^[0-9a-f.-]+(\.(rc|pr-[0-9]+))?(\.[0-9]+\.[0-9a-f]{16})?$/.test(t.token))return;const s=Math.max(1,Math.floor((t.expiresAt||0)-Date.now()/1000));document.cookie="__Host-omelette-preview="+t.token+"; Path=/; Secure; SameSite=None; Partitioned; Max-Age="+s;C();return}if(t.__om_file_r){const s=w[t.id];if(!s)return;clearTimeout(s.t);delete w[t.id];s.settle(t.ok?{persisted:true}:{persisted:false,reason:t.error||"write failed"});return}if(t.__om_api_r){const s=f[t.id];if(!s)return;if(t.error!=null){clearTimeout(s.t);delete f[t.id];s.reject(new Error(t.error));return}if(t.chunk!=null){clearTimeout(s.t);s.t=s.arm();s.text+=t.chunk;return}if(t.done){clearTimeout(s.t);delete f[t.id];s.resolve({text:t.text!=null?t.text:s.text,message:t.message});return}return}if(!t.__om_eval)return;const a=t;const u=(s)=>{e.source.postMessage({...s,__om_eval_r:1,id:a.id},e.origin)};try{const s=(0,eval)(a.code);if(s&&typeof s.then==="function"){s.then((S)=>u({ok:1,v:O(S)}),(S)=>u({ok:0,e:String(S)}))}else{u({ok:1,v:O(s)})}}catch(s){u({ok:0,e:String(s)})}})}})();
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A artista — Pam Berger, arte têxtil em Itajaí</title>
+<meta name="description" content="Pamela Berger borda à mão em Itajaí, Santa Catarina. Um ateliê onde o tempo é ingrediente: do desenho ao bastidor, ponto a ponto, sem pressa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: #fffdfa; color: #3a332c; font-family: "Instrument Sans", system-ui, sans-serif; font-size: 18px; line-height: 1.75; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  * { box-sizing: border-box; }
+  img { display: block; max-width: 100%; }
+  a { color: #3a332c; text-decoration: none; }
+  a:hover { color: #c9944a; }
+  ::selection { background: #f7e1d7; color: #3a332c; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition-duration: .01ms !important; } }
+</style>
+</helmet>
+
+<div style="position:relative">
+
+<header style="position:relative;z-index:60">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(22px,3vw,40px) clamp(20px,5vw,64px);display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap">
+    <a href="index.html" style="display:flex;align-items:center;gap:14px">
+      <img src="assets/logo.png" alt="Pam Berger — arte têxtil" style="width:42px;height:42px;object-fit:contain">
+      <span style="font-family:Fraunces,Georgia,serif;font-weight:400;font-size:19px;letter-spacing:.02em;line-height:1">Pam Berger<span style="display:block;font-family:'Instrument Sans',sans-serif;font-size:9px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:#6b6157;margin-top:7px">Arte têxtil</span></span>
+    </a>
+    <nav style="display:flex;align-items:center;gap:clamp(16px,2.4vw,32px);flex-wrap:wrap;padding-top:9px">
+      <a href="index.html#obras" style="font-size:11.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#6b6157" style-hover="color:#3a332c">Obras</a>
+      <a href="index.html#veu" style="font-size:11.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#6b6157" style-hover="color:#3a332c">Véu de noiva</a>
+      <a href="index.html#ponto" style="font-size:11.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#6b6157" style-hover="color:#3a332c">O ponto</a>
+      <a href="acervo.html#aulas" style="font-size:11.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#6b6157" style-hover="color:#3a332c">Aulas</a>
+      <a href="a-artista.html" aria-current="page" style="font-size:11.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#3a332c">A artista</a>
+      <a href="acervo.html" style="font-size:11.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#6b6157" style-hover="color:#3a332c">Acervo</a>
+      <a href="encomendar.html" style="font-size:11.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#3a332c;border-bottom:1px solid #c9944a;padding-bottom:4px" style-hover="color:#c9944a">Encomendar</a>
+    </nav>
+  </div>
+</header>
+
+<section style="max-width:1440px;margin:0 auto;padding:clamp(40px,8vh,110px) clamp(20px,5vw,64px) clamp(34px,5vw,64px)">
+  <div data-reveal="1" style="transition:opacity 1.5s cubic-bezier(.22,.8,.28,1),transform 1.5s cubic-bezier(.22,.8,.28,1)">
+    <div style="font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#6b6157;margin-bottom:clamp(20px,3vw,34px)">A artista</div>
+    <h1 style="font-family:Fraunces,Georgia,serif;font-weight:300;font-size:clamp(2.6rem,8vw,6.4rem);line-height:.95;letter-spacing:-.04em;margin:0;max-width:19em;text-wrap:balance">Bordar é uma forma de <em style="font-style:italic;font-weight:300;color:#c9944a">guardar o tempo</em></h1>
+  </div>
+</section>
+
+<section style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,5vw,64px) clamp(60px,10vw,140px)">
+  <div style="display:flex;flex-wrap:wrap;gap:clamp(30px,6vw,88px);align-items:center">
+    <div data-reveal="1" style="transition:opacity 1.4s cubic-bezier(.22,.8,.28,1),transform 1.4s cubic-bezier(.22,.8,.28,1);flex:1 1 clamp(280px,40vw,520px);min-width:0;max-width:520px;position:relative;overflow:hidden;background:#f6f3ec;aspect-ratio:4/5">
+      <img src="assets/pam-04.jpg" alt="Pamela Berger de perfil, concentrada, segurando o bastidor com o mostruário de pontos" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%">
+    </div>
+    <div data-reveal="1" data-delay="180" style="transition:opacity 1.4s cubic-bezier(.22,.8,.28,1),transform 1.4s cubic-bezier(.22,.8,.28,1);flex:1 1 360px;min-width:0;max-width:36em">
+      <h2 style="font-family:Fraunces,Georgia,serif;font-weight:300;font-style:italic;font-size:clamp(1.7rem,4.4vw,3rem);line-height:1.14;letter-spacing:-.03em;margin:0 0 clamp(22px,3vw,34px);text-wrap:pretty">Um ateliê onde o tempo é ingrediente</h2>
+      <p style="margin:0 0 20px;color:#3a332c;font-size:clamp(1.02rem,1.7vw,1.18rem);line-height:1.72">O Ateliê Pam Berger nasceu em Itajaí, do encontro entre linha, tecido e o desejo de eternizar momentos. Cada quadro é bordado à mão, ponto a ponto, sem pressa.</p>
+      <p style="margin:0;color:#6b6157;font-size:clamp(1.02rem,1.7vw,1.18rem);line-height:1.72">Aqui, o tempo não é obstáculo — é parte da obra. É o que dá à peça sua alma, sua textura e a intenção de quem a encomendou.</p>
+      <svg viewBox="0 0 300 16" preserveAspectRatio="none" style="width:min(240px,100%);height:14px;display:block;margin:clamp(30px,4vw,46px) 0 clamp(18px,2.5vw,26px);overflow:visible">
+        <path data-stitch-path="1" d="M1 9 Q 75 2, 150 9 T 299 8" pathLength="1000" fill="none" stroke="#c9944a" strokeWidth="1.4" strokeLinecap="round" strokeDasharray="7 11" strokeDashoffset="0" style="transition:stroke-dashoffset 2s cubic-bezier(.22,.8,.28,1)"></path>
+      </svg>
+      <p style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:300;font-style:italic;font-size:clamp(1.12rem,2.2vw,1.5rem);line-height:1.5;letter-spacing:-.01em;color:#6b6157;text-wrap:pretty">feito à mão · feito com tempo · feito com intenção</p>
+    </div>
+  </div>
+</section>
+
+<figure style="margin:0;width:100%">
+  <div style="overflow:hidden;background:#f6f3ec">
+    <img src="assets/maos-bordando.jpg" alt="As mãos da artista puxando a linha verde sobre o linho esticado no bastidor" style="width:100%;aspect-ratio:16/9;object-fit:cover">
+  </div>
+  <figcaption style="max-width:1440px;margin:0 auto;padding:20px clamp(20px,5vw,64px) 0;font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#6b6157">Ponto corrido · linha de algodão sobre linho · ateliê em Itajaí</figcaption>
+</figure>
+
+<section style="max-width:1440px;margin:0 auto;padding:clamp(76px,12vw,170px) clamp(20px,5vw,64px)">
+  <div data-reveal="1" style="transition:opacity 1.4s cubic-bezier(.22,.8,.28,1),transform 1.4s cubic-bezier(.22,.8,.28,1);margin-bottom:clamp(30px,4vw,54px)">
+    <h2 style="font-family:Fraunces,Georgia,serif;font-weight:300;font-size:clamp(2rem,5.4vw,3.6rem);line-height:1.04;letter-spacing:-.035em;margin:0;max-width:22em;text-wrap:balance">No que acreditamos</h2>
+  </div>
+
+  <div data-reveal="1" data-delay="120" style="transition:opacity 1.4s cubic-bezier(.22,.8,.28,1),transform 1.4s cubic-bezier(.22,.8,.28,1);border-bottom:1px solid rgba(58,51,44,.14)">
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(10px,3vw,56px);padding:clamp(24px,3.4vw,40px) 0;border-top:1px solid rgba(58,51,44,.14)">
+      <h3 style="flex:0 1 clamp(200px,24vw,300px);min-width:0;margin:0;font-family:Fraunces,Georgia,serif;font-weight:400;font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.2;letter-spacing:-.02em">Feito com afeto</h3>
+      <p style="flex:1 1 300px;min-width:0;margin:0;color:#6b6157;max-width:34em">Cada encomenda é tratada como única, com escuta e carinho do primeiro contato ao último ponto.</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(10px,3vw,56px);padding:clamp(24px,3.4vw,40px) 0;border-top:1px solid rgba(58,51,44,.14)">
+      <h3 style="flex:0 1 clamp(200px,24vw,300px);min-width:0;margin:0;font-family:Fraunces,Georgia,serif;font-weight:400;font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.2;letter-spacing:-.02em">Sem pressa</h3>
+      <p style="flex:1 1 300px;min-width:0;margin:0;color:#6b6157;max-width:34em">Respeitamos o tempo do bordado manual. É essa lentidão que garante uma peça feita para durar gerações.</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(10px,3vw,56px);padding:clamp(24px,3.4vw,40px) 0;border-top:1px solid rgba(58,51,44,.14)">
+      <h3 style="flex:0 1 clamp(200px,24vw,300px);min-width:0;margin:0;font-family:Fraunces,Georgia,serif;font-weight:400;font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.2;letter-spacing:-.02em">Exclusivo e autoral</h3>
+      <p style="flex:1 1 300px;min-width:0;margin:0;color:#6b6157;max-width:34em">Peças personalizadas e de autoria própria, pensadas também para arquitetas e designers que buscam algo com alma.</p>
+    </div>
+  </div>
+</section>
+
+<section id="processo" style="background:#f6f3ec">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(70px,11vw,150px) clamp(20px,5vw,64px)">
+    <div data-reveal="1" style="transition:opacity 1.4s cubic-bezier(.22,.8,.28,1),transform 1.4s cubic-bezier(.22,.8,.28,1);margin-bottom:clamp(30px,4vw,54px)">
+      <div style="font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#6b6157;margin-bottom:18px">Como nasce uma peça</div>
+      <h2 style="font-family:Fraunces,Georgia,serif;font-weight:300;font-size:clamp(2rem,5.4vw,3.6rem);line-height:1.04;letter-spacing:-.035em;margin:0;max-width:20em;text-wrap:balance">Do desenho ao <em style="font-style:italic;font-weight:300;color:#c9944a">bastidor</em></h2>
+    </div>
+
+    <div data-reveal="1" data-delay="120" style="transition:opacity 1.4s cubic-bezier(.22,.8,.28,1),transform 1.4s cubic-bezier(.22,.8,.28,1);border-bottom:1px solid rgba(58,51,44,.16)">
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,48px);align-items:baseline;padding:clamp(24px,3.4vw,40px) 0;border-top:1px solid rgba(58,51,44,.16)">
+        <span style="flex:0 0 auto;font-family:Fraunces,Georgia,serif;font-weight:300;font-size:clamp(1.9rem,4vw,2.9rem);line-height:1;letter-spacing:-.03em;color:#c9944a">01</span>
+        <h3 style="flex:0 1 clamp(150px,18vw,230px);min-width:0;margin:0;font-family:Fraunces,Georgia,serif;font-weight:400;font-size:clamp(1.25rem,2.4vw,1.65rem);line-height:1.2;letter-spacing:-.02em">Conversa</h3>
+        <p style="flex:1 1 300px;min-width:0;margin:0;color:#6b6157;max-width:34em">Entendemos a história, o significado e o espaço onde a peça vai viver.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,48px);align-items:baseline;padding:clamp(24px,3.4vw,40px) 0;border-top:1px solid rgba(58,51,44,.16)">
+        <span style="flex:0 0 auto;font-family:Fraunces,Georgia,serif;font-weight:300;font-size:clamp(1.9rem,4vw,2.9rem);line-height:1;letter-spacing:-.03em;color:#c9944a">02</span>
+        <h3 style="flex:0 1 clamp(150px,18vw,230px);min-width:0;margin:0;font-family:Fraunces,Georgia,serif;font-weight:400;font-size:clamp(1.25rem,2.4vw,1.65rem);line-height:1.2;letter-spacing:-.02em">Desenho</h3>
+        <p style="flex:1 1 300px;min-width:0;margin:0;color:#6b6157;max-width:34em">Criamos o traçado, escolhemos cores das linhas e o tecido ideal.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,48px);align-items:baseline;padding:clamp(24px,3.4vw,40px) 0;border-top:1px solid rgba(58,51,44,.16)">
+        <span style="flex:0 0 auto;font-family:Fraunces,Georgia,serif;font-weight:300;font-size:clamp(1.9rem,4vw,2.9rem);line-height:1;letter-spacing:-.03em;color:#c9944a">03</span>
+        <h3 style="flex:0 1 clamp(150px,18vw,230px);min-width:0;margin:0;font-family:Fraunces,Georgia,serif;font-weight:400;font-size:clamp(1.25rem,2.4vw,1.65rem);line-height:1.2;letter-spacing:-.02em">Bordado à mão</h3>
+        <p style="flex:1 1 300px;min-width:0;margin:0;color:#6b6157;max-width:34em">Ponto a ponto, com o tempo que a peça merece.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,48px);align-items:baseline;padding:clamp(24px,3.4vw,40px) 0;border-top:1px solid rgba(58,51,44,.16)">
+        <span style="flex:0 0 auto;font-family:Fraunces,Georgia,serif;font-weight:300;font-size:clamp(1.9rem,4vw,2.9rem);line-height:1;letter-spacing:-.03em;color:#c9944a">04</span>
+        <h3 style="flex:0 1 clamp(150px,18vw,230px);min-width:0;margin:0;font-family:Fraunces,Georgia,serif;font-weight:400;font-size:clamp(1.25rem,2.4vw,1.65rem);line-height:1.2;letter-spacing:-.02em">Entrega</h3>
+        <p style="flex:1 1 300px;min-width:0;margin:0;color:#6b6157;max-width:34em">A peça é emoldurada e chega pronta para virar memória na sua parede.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="max-width:1440px;margin:0 auto;padding:clamp(70px,11vw,150px) clamp(20px,5vw,64px) 0">
+  <div data-reveal="1" style="transition:opacity 1.4s cubic-bezier(.22,.8,.28,1),transform 1.4s cubic-bezier(.22,.8,.28,1);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,2vw,26px);align-items:start">
+    <figure style="margin:0;min-width:0">
+      <div style="overflow:hidden;background:#f6f3ec"><img src="assets/pam-05.jpg" alt="Pamela segurando o bastidor com o nome Luísa bordado entre flores e um arco-íris" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 30%"></div>
+      <figcaption style="margin-top:14px;font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#6b6157">Bastidor com nome · linha de algodão</figcaption>
+    </figure>
+    <figure style="margin:0;min-width:0">
+      <div style="overflow:hidden;background:#f6f3ec"><img src="assets/maos-bebe.jpg" alt="Mãos de bebê sobre o retrato bordado em linha, em moldura acrílica" style="width:100%;aspect-ratio:4/5;object-fit:cover"></div>
+      <figcaption style="margin-top:14px;font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#6b6157">Retrato bordado · moldura acrílica</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section style="max-width:1440px;margin:0 auto;padding:clamp(80px,14vw,200px) clamp(20px,5vw,64px)">
+  <div data-reveal="1" style="transition:opacity 1.5s cubic-bezier(.22,.8,.28,1),transform 1.5s cubic-bezier(.22,.8,.28,1)">
+    <h2 style="font-family:Fraunces,Georgia,serif;font-weight:300;font-size:clamp(2.2rem,7.4vw,5.6rem);line-height:.98;letter-spacing:-.04em;margin:0;max-width:17em;text-wrap:balance">Tem uma história para <em style="font-style:italic;font-weight:300;color:#c9944a">eternizar?</em></h2>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(24px,5vw,70px);align-items:flex-end;justify-content:space-between;margin-top:clamp(36px,6vw,72px);padding-top:30px;border-top:1px solid rgba(58,51,44,.14)">
+      <p style="flex:1 1 260px;min-width:0;margin:0;color:#6b6157;max-width:26em;font-size:16.5px">Me conta a ocasião pelo WhatsApp. Respondo com ideias, prazo e valor no mesmo dia.</p>
+      <div style="flex:0 1 auto;display:flex;flex-wrap:wrap;gap:clamp(20px,3vw,40px);align-items:baseline">
+        <a href="{{ waEncomenda }}" target="_blank" rel="noopener" style="font-family:Fraunces,Georgia,serif;font-weight:300;font-size:clamp(1.4rem,3.4vw,2.2rem);letter-spacing:-.02em;border-bottom:1px solid #c9944a;padding-bottom:6px" style-hover="color:#c9944a">(47) 99640-9666</a>
+        <a href="https://instagram.com/pam_berger_" target="_blank" rel="noopener" style="font-size:11.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#6b6157" style-hover="color:#c9944a">@pam_berger_</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="border-top:1px solid rgba(58,51,44,.13)">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(36px,5vw,60px) clamp(20px,5vw,64px);display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#6b6157">
+    <div style="display:flex;align-items:center;gap:12px">
+      <img src="assets/logo.png" alt="" style="width:30px;height:30px;object-fit:contain">
+      <span>Pam Berger · Arte têxtil · Itajaí, SC</span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(16px,3vw,32px)">
+      <a href="acervo.html" style="color:#6b6157" style-hover="color:#3a332c">Acervo</a>
+      <a href="a-artista.html" style="color:#6b6157" style-hover="color:#3a332c">A artista</a>
+      <a href="encomendar.html" style="color:#6b6157" style-hover="color:#3a332c">Encomendar</a>
+      <a href="https://instagram.com/pam_berger_" target="_blank" rel="noopener" style="color:#6b6157" style-hover="color:#3a332c">Instagram</a>
+      <span>© 2026</span>
+    </div>
+  </div>
+</footer>
+
+<a href="{{ waEncomenda }}" target="_blank" rel="noopener" aria-label="Encomendar pelo WhatsApp" title="Encomendar pelo WhatsApp" style="position:fixed;bottom:clamp(16px,3vw,28px);right:clamp(16px,3vw,28px);z-index:80;width:52px;height:52px;border-radius:50%;background:#3a332c;color:#fffdfa;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -12px rgba(58,51,44,.7)" style-hover="background:#c9944a">
+  <svg viewBox="0 0 32 32" style="width:22px;height:22px;fill:currentColor"><path d="M16 3C9 3 3.3 8.6 3.3 15.5c0 2.5.7 4.8 2 6.8L3 29l7-2.2c1.9 1 4 1.6 6 1.6 7 0 12.7-5.6 12.7-12.5S23 3 16 3zm0 22.7c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-4.2 1.3 1.3-4.1-.2-.4c-1-1.7-1.6-3.6-1.6-5.6C5.6 9.9 10.3 5.3 16 5.3s10.4 4.6 10.4 10.2S21.7 25.7 16 25.7zm5.7-7.6c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.7-1.6-1-.9-1.6-2-1.8-2.3-.2-.3 0-.5.1-.6.1-.1.3-.4.5-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C13.5 12 13 10.7 12.8 10c-.2-.5-.4-.5-.5-.5h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"></path></svg>
+</a>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;movimento&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;elaborado&quot;,&quot;discreto&quot;],&quot;default&quot;:&quot;elaborado&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Movimento&quot;},&quot;whatsapp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;5547996409666&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contato&quot;}}">
+class Component extends DCLogic {
+  wa(msg) {
+    const n = String(this.props.whatsapp || "5547996409666").replace(/\D/g, "");
+    return "https://wa.me/" + n + "?text=" + encodeURIComponent(msg);
+  }
+  renderVals() {
+    return {
+      waEncomenda: this.wa("Oi, Pam! Vim pelo site e queria encomendar uma peça bordada.")
+    };
+  }
+  componentDidMount() {
+    const suave = this.props.movimento === "discreto";
+    const reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const mostrar = (el) => { el.style.opacity = "1"; el.style.transform = "none"; };
+    const reveals = Array.from(document.querySelectorAll("[data-reveal]"));
+    const linhas = Array.from(document.querySelectorAll("[data-stitch-path]"));
+
+    // O markup nasce visível. Só escondemos aqui, quando há JS para revelar de volta.
+    if (reduzir) return;
+    reveals.forEach((el) => { el.style.opacity = "0"; el.style.transform = "translateY(24px)"; });
+    linhas.forEach((el) => { el.style.strokeDashoffset = "1000"; });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.style.transitionDelay = (suave ? 0 : Number(e.target.dataset.delay || 0)) + "ms";
+        mostrar(e.target);
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.06, rootMargin: "0px 0px -5% 0px" });
+    reveals.forEach((el) => io.observe(el));
+    this._io = io;
+
+    const io2 = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.style.strokeDashoffset = "0";
+        io2.unobserve(e.target);
+      });
+    }, { threshold: 0.3 });
+    linhas.forEach((el) => io2.observe(el));
+    this._io2 = io2;
+
+    this._fallback = setTimeout(() => {
+      reveals.forEach(mostrar);
+      linhas.forEach((el) => { el.style.strokeDashoffset = "0"; });
+    }, 5000);
+  }
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    if (this._io2) this._io2.disconnect();
+    if (this._fallback) clearTimeout(this._fallback);
+  }
+}
+</script>
+</body>
+</html>
